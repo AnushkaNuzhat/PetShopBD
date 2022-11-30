@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-intro padding-y-sm">
+	<div class="container">
+		<div class="intro-banner-wrap">
+			<div class="owl-carousel owl-theme">
+				{% for banner_image in banner_images %}
+				<div class="item" style="min-width:100%; min-height:400px">
+					<img src="{{ banner_image.banner_image.url }}" class="img-fluid rounded img-wrap" alt="Image">
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y-sm">
+	<div class="container">
+		<header class="section-heading">
+			<a href="{% url 'store' %}" class="btn btn-outline-primary float-right">See all</a>
+			<h3 class="section-title">Popular Animals</h3>
+		</header><!-- sect-heading -->
+		<div class="row">
+			{% for pet in pets %}
+			<!-- <div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="{{ animal.get_url }}" class="img-wrap"> <img src="{{ animal.animal_image.url }}"> </a>
+			<figcaption class="info-wrap">
+				<a href="{{ animal.get_url }}" class="title">{{ animal.animal_type }} {{animal.breed}}</a>
+			</figcaption>
+		</div> 
+	</div>  -->
+			<div class="col-md-6 col-sm-12 col-lg-3 mb-3">
+				<figure class="card card-product">
+					<div class="img-wrap">
+						<img src="/media/{{pet.main_image}}" style="width:100%; height:300px;">
+					</div>
+					<figcaption class="p-2 info-wrap">
+						<h5>{{pet.name}}</h5>
+						<p href="#" class="title">Type:
+							<strong> {{pet.category }}</strong>
+						</p>
+						<p href="#" class="title">Breed:
+							<strong> {{pet.breed }}</strong>
+						</p>
+						<div class="action-wrap">
+							<div class="price-wrap h5">
+								<span style="color: #ff8000;">price:</span> <span class="price-new">&#2547;
+									{{pet.price|floatformat:2}}</span>
+							</div>
+						</div>
+						{% if user.is_authenticated %}
+						<a href="{% url 'pet_details' id=pet.id %}" class="btn  btn-primary"> <i
+								class="fa fa-shopping-cart"></i> Buy</a>
+						{% else %}
+						<a href="{% url 'user_app:login' %}" class="btn  btn-primary"> <i
+								class="fa fa-shopping-cart"></i> Buy</a>
+						{% endif %}
+					</figcaption>
+				</figure>
+			</div>
+			{% endfor %}
+		</div>
+	</div><!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->
+
+
+</body>
+
+</html>
+
+{% endblock %}

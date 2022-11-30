@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+    <div class="card">
+        <div class="row">
+            <aside class="col-sm-5 border-right">
+                <article class="gallery-wrap">
+                    <div class="img-big-wrap">
+                        <div>
+                            <a href="#"><img src="/media/{{pet.main_image}}" style="width:450px"></a>
+                        </div>
+                    </div>
+                </article>
+            </aside>
+            <aside class="col-sm-7">
+                <article class="card-body p-5">
+                    <h3 class="title mp-3">{{pet.name}}</h3>
+                    <h4><small>Type: </small>{{pet.category}}</h4>
+                    <h5 class="title mp-3"> <small>Breed: </small> {{ pet.breed.capitalize }}</h5>
+                    <p class="price-detail-wrap">
+                        <span class="price h3 text-warning">
+                            <span class="currency">BDT &#2547;</span><span class="num">{{pet.price}}</span>
+                        </span>
+                    </p>
+                    <dl class="item-property">
+                        <dt>Description</dt>
+                        <dd>
+                            <p>{{pet.detail_text|linebreaks}}</p>
+                        </dd>
+                    </dl>
+                    <a href="{% url 'order_app:add_to_cart' pk=pet.pk %}"
+                        class="btn btn-lg btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add
+                        to Cart</a>
+                </article>
+            </aside>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

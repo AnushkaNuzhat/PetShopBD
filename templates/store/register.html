@@ -1,0 +1,53 @@
+{% extends 'usersignup.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+  {% if message %}
+  <div class="alert alert-success">
+    {{message}}
+  </div>
+  {% endif %}
+  <!-- ============================ COMPONENT REGISTER   ================================= -->
+  <div class="card mx-auto" style="max-width:520px; margin-top:5px;">
+    <article class="card-body">
+      <header class="mb-4">
+        <h4 class="card-title">Sign up</h4>
+        <p class="text-start mt-4">Already Have an account? <a href="{% url 'user_app:login' %}">Log In</a></p>
+      </header>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <!-- <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" placeholder="">
+          <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Create password</label>
+            <input class="form-control" name="password1" type="password">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Repeat password</label>
+            <input class="form-control" name="password2" type="password">
+          </div>
+          <div class="pl-2 ">
+            <small class="form-text text-muted">Password must be 8 characters or longer</small>
+          </div>
+          <div class="mb-2 pl-2">
+            <small class="form-text text-muted">It must contain a digit and a uppercase/lowercase letter</small>
+          </div>
+        </div> -->
+        <div class="form-group">
+          {{form|crispy}}
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block"> Register </button>
+        </div>
+      </form>
+    </article><!-- card-body.// -->
+  </div> <!-- card .// -->
+  <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock content %}

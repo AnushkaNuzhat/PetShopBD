@@ -1,0 +1,39 @@
+{% extends 'usersignup.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y" style="min-height:84vh">
+    {% if message %}
+    <div class="alert alert-success">
+        {{message}}
+    </div>
+    {% endif %}
+    <!-- ============================ COMPONENT LOGIN   ================================= -->
+    <div class="card mx-auto" style="max-width: 380px; margin-top:60px;">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Sign in</h4>
+            <form action="" method="POST" class="form-group">
+                {{form|crispy}}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success" name="button">Log in</button>
+                <!-- <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Email Address">
+                </div> 
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
+                </div> 
+
+                <div class="form-group">
+                    <a href="{% url 'home' %}" class="float-right">Forgot password?</a> -->
+
+        </div>
+
+        </form>
+    </div> <!-- card-body.// -->
+    </div> <!-- card .// -->
+
+    <p class="text-center mt-4">Don't have account? <a href="{% url 'user_app:signup' %}">Sign up</a></p>
+    <br><br>
+    <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+
+    {% endblock content %}
